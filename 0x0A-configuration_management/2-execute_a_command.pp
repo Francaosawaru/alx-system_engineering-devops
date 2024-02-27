@@ -1,6 +1,5 @@
-# This manifest kills a specific process using the execute command
+# Kills a process named killmenow
 
-exec { 'pkill killmenow':
-  command => 'pkill killmenow',
-  path    => '/usr/bin'
+exec { 'pkill -f killmenow':
+  path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
