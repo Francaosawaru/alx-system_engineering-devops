@@ -1,9 +1,6 @@
-# A manifest to kill a running process killmenow from the process table
-# on every puppet run
-exec { 'killing a process using pkill':
-  command  => 'pkill -9 killmenow',
-  path     => '/usr/bin:/bin',
-  onlyif   => 'pgrep killmenow',
-  provider => shell,
+# This manifest kills a specific process using the execute command
 
+exec { 'kills the current process':
+  command => 'pkill -x killmenow',
+  path    => '/usr/bin'
 }
