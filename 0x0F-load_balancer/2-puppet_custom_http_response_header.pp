@@ -1,6 +1,30 @@
-# Installs a Nginx server, sets hello to file, allows redirection
-
-exec {'install':
-  provider => shell,
-  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx ; echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html ; sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ permanent;/" /etc/nginx/sites-available/default ; sudo service nginx start ; sed -i "s/^\tlocation \/ {/\tlocation \/ {\n\t\tadd_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/sites-available/default ; service nginx restart',
-}
+# Setup New Ubuntu server with nginx
+# # and add a custom HTTP header
+#
+# exec { 'update system':
+#         command => '/usr/bin/apt-get update',
+#         }
+#
+#         package { 'nginx':
+#         	ensure => 'installed',
+#         		require => Exec['update system']
+#         		}
+#
+#         		file {'/var/www/html/index.html':
+#         			content => 'Hello World!'
+#         			}
+#
+#         			exec {'redirect_me':
+#         				command => 'sed -i "24i\	rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
+#         					provider => 'shell'
+#         					}
+#
+#         					exec {'HTTP header':
+#         						command => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+#         							provider => 'shell'
+#         							}
+#
+#         							service {'nginx':
+#         								ensure => running,
+#         									require => Package['nginx']
+#         									}
