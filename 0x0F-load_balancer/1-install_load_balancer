@@ -40,8 +40,8 @@ function install() {
 
 																  backend clickviral-tech-backend
 																      balance roundrobin
-																          server 151666-web-01 100.25.190.21:80 check
-																	      server 151666-web-02 54.160.77.90:80 check
+																          server 209844-web-01 52.87.212.24:80 check
+																	      server 209844-web-02 54.209.128.7:80 check
 																	      "
 
 																	      # shellcheck disable=SC2154
