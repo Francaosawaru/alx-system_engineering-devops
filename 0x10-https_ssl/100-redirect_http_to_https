@@ -33,7 +33,7 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend clickviral-frontend
+frontend francaosawaru-frontend
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
@@ -41,11 +41,11 @@ frontend clickviral-frontend
         default_backend francaosawaru-backend
 
 frontend francaosawaru-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/francaosawaru.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.francaosawaru.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend francaosawaru-backend
 
 backend francaosawaru-backend
         balance roundrobin
-        server 151666-web-01 52.87.212.24:80 check
-        server 151666-web-02 54.209.128.7:80 check
+        server 209844-web-01 52.87.212.24:80 check
+        server 209844-web-02 54.209.128.7:80 check
