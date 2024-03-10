@@ -41,7 +41,7 @@ frontend francaosawaru-frontend
         default_backend francaosawaru-backend
 
 frontend francaosawaru-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.francaosawaru.tech.pem
+        bind *:443 ssl crt /etc/letsencrypt/live/www.francaosawaru.tech/www.francaosawaru.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend francaosawaru-backend
 
@@ -49,3 +49,7 @@ backend francaosawaru-backend
         balance roundrobin
         server 209844-web-01 52.87.212.24:80 check
         server 209844-web-02 54.209.128.7:80 check
+
+ #	server 209844-web-01 52.87.212.24:80 check
+ #	server 209844-web-02 54.209.128.7:80 check
+
