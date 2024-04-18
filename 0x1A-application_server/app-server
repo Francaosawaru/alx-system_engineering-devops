@@ -16,9 +16,9 @@ sudo apt-get install -y gunicorn
 # Remove any current AIRBNB Repositoty
 rm -rf AirBnB_clone_v*
 # Clone My Repository
-git clone https://github.com/Francaosawaru/AirBnB_clone_v2
-git clone https://github.com/Francaosawaru/AirBnB_clone_v3
-git clone https://github.com/Francaosawaru/AirBnB_clone_v4
+git clone https://github.com/hardope/AirBnB_clone_v2
+git clone https://github.com/hardope/AirBnB_clone_v3
+git clone https://github.com/hardope/AirBnB_clone_v4
 # Change Directory
 cd AirBnB_clone_v2
 # Switch Branches
@@ -31,6 +31,7 @@ NGINX_CONFIG="/etc/nginx/sites-enabled/default"
 sudo tee "$NGINX_CONFIG" > /dev/null <<EOF
 server {
     listen 80 default_server;
+A
 
     listen [::]:80 default_server;
     root /var/www/html;
@@ -46,10 +47,12 @@ server {
     }
     location / {
         proxy_pass http://0.0.0.0:5003;
+A
     }
     location /airbnb-onepage {
         proxy_pass http://0.0.0.0:5000/airbnb-onepage;
     }
+A
     location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
         proxy_pass http://0.0.0.0:5001/number_odd_or_even/\$1;
     }
